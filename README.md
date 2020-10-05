@@ -1,38 +1,39 @@
-# Проект по реализации REST API для социальной сети Yatube с помощью инструментов Django Rest Framework
-**Установка:**
+# Yatube API
 
-Склонируйте репозиторий
+### Что ты такое?
 
-`git clone https://github.com/sh4rpy/api_final_yatube.git`
+Это один из моих проектов, который я писал во время учебы в Яндекс.Практикуме.
 
-Установите зависимости
+REST API социальной сети, дающей пользователям возможность завести учетную запись, публиковать записи, подписываться на любимых авторов и создавать сообщества по интересам.
 
-`pip install -r requirements.txt`
+### Документация:
 
-**Запросы:**
+Проект документирован. Узнать подробности можно по адресу `/redoc/`
 
+### Как запустить?
+
+Склонируйте репозиторий:
+
+```bash
+git clone https://github.com/sh4rpy/yatube_api.git
 ```
-/api/v1/posts/ - получить список всех пубоикаций (GET)
-/api/v1/posts/ - создать новую публикацию (POST)
-/api/v1/posts/{post_id}/ - получить публикацию по id (GET)
-/api/v1/posts/{post_id}/ - обновить публикацию по id (PUT)
-/api/v1/posts/{post_id}/ - частично обновить публикацию по id (PATCH)
-/api/v1/posts/{post_id}/ - удалить публикацию по id (DELETE)
 
-/api/v1/posts/{post_id}/comments/ - получить список всех комментариев публикации (GET)
-/api/v1/posts/{post_id}/comments/ - создать новый комменатрий для публикации (POST)
-/api/v1/posts/{post_id}/comments/{comment_id}/ - получить комментарий для публикации по id (GET)
-/api/v1/posts/{post_id}/comments/{comment_id}/ - получить комментарий для публикации по id (GET)
-/api/v1/posts/{post_id}/comments/{comment_id}/ - обновить комментарий для публикации по id (PUT)
-/api/v1/posts/{post_id}/comments/{comment_id}/ - частично обновить комментарий для публикации по id (PATCH)
-/api/v1/posts/{post_id}/comments/{comment_id}/ - удалить комментарий для публикации по id (DELETE)
+Создайте файл .env в одной директории с файлом settings.py. Создайте в нем переменную окружения  SECRET_KEY, которой присвойте скопированный ключ с [сайта генерации ключей](https://djecrety.ir). Далее добавьте переменные для работы с базой данных. Выглядеть файл должен так:
 
-/api/v1/token/ - получить JWT-токен (POST)
-/api/v1/token/refresh/ - обновить JWT-токен (POST)
-
-/api/v1/follow/ - получить список всех подписчиков (GET)
-/api/v1/follow/ - создать подписку (POST)
-
-/api/v1/group/ - получить список всех групп (GET)
-/api/v1/group/ - создать новую группу (POST)
+```python
+SECRET_KEY=скопированный_ключ
+DB_ENGINE=django.db.backends.postgresql
+DB_NAME=имя_базы
+DB_USER=юзернейм
+DB_PASSWORD=пароль
+DB_HOST=db # имя контейнера базы данных
+DB_PORT=порт
 ```
+
+Запустите **docker-compose** командной:
+
+```bash
+docker-compose up
+```
+
+Сервис станет доступен по адресу [http://0.0.0.0:8000](http://0.0.0.0:8000).
